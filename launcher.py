@@ -28,7 +28,8 @@ VERSION_URL = (
 )
 BASE_DIR = Path(__file__).resolve().parent
 LOCAL_VERSION_FILE = BASE_DIR / "version.json"
-GAME_SCRIPT = BASE_DIR / "main.py"
+GODOT_EXE = Path(r"C:\Godot\Godot_v4.7.2-stable_win64.exe")
+PROJECT_DIR = BASE_DIR
 
 # ──────────────────────────── Paleta de colores ────────────────────────
 BG_DARK      = "#0d1117"
@@ -296,26 +297,24 @@ class Launcher(tk.Tk):
 
     # ── Lanzar el juego ───────────────────────────────────────────────
     def _launch_game(self):
-        if not GAME_SCRIPT.exists():
+        if not GODOT_EXE.exists():
             messagebox.showerror(
                 "Error",
-                f"No se encontró el archivo del juego:\n{GAME_SCRIPT}",
+                f"No se encontró Godot Engine:\n{GODOT_EXE}\n\n"
+                "Descárgalo de https://godotengine.org/download",
             )
             return
 
-        # Detectar ejecutable de Python
-        python_exe = sys.executable or "python3"
-
-        # Lanzar main.py como proceso independiente
+        # Lanzar Godot con el proyecto
         try:
             if platform.system() == "Windows":
                 subprocess.Popen(
-                    [python_exe, str(GAME_SCRIPT)],
+                    [str(GODOT_EXE), "--path", str(PROJECT_DIR)],
                     creationflags=subprocess.DETACHED_PROCESS,
                 )
             else:
                 subprocess.Popen(
-                    [python_exe, str(GAME_SCRIPT)],
+                    [str(GODOT_EXE), "--path", str(PROJECT_DIR)],
                     start_new_session=True,
                 )
         except OSError as exc:

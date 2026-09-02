@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/MainMenu.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/GameWorld.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/PauseMenu.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/WinScreen.tscn" id="5"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1")
+
+[node name="MainMenu" parent="." instance=ExtResource("2")]
+
+[node name="GameWorld" parent="." instance=ExtResource("3")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("4")]
+visible = false
+
+[node name="WinScreen" parent="." instance=ExtResource("5")]
+visible = false
