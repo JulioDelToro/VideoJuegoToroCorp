@@ -1,0 +1,29 @@
+================================================================================
+                    TOROCORP: RUTAS DE PODER (PC WINDOWS)
+                   Estudio: ToroCorp Studio (2026)
+        Desarrolladores: Julio Del Toro & Juan Melquiades
+================================================================================
+
+¡Bienvenido a ToroCorp: Rutas de Poder!
+Videojuego de carreras arcade 2D basado en físicas de suspensión elástica,
+tracción trasera (RWD), giros acrobáticos y combustible crítico.
+
+CONTROLES:
+----------
+• Acelerar / Inclinar atrás en el aire : Tecla W / Flecha Arriba / Barra Espaciadora
+• Frenar / Reversa / Inclinar adelante: Tecla S / Flecha Abajo
+• Nivelar trompa en el aire           : Tecla A / Flecha Izquierda
+• Nivelar cola en el aire             : Tecla D / Flecha Derecha
+• Pausa                               : Tecla Escape / P
+
+OBJETIVO:
+---------
+Recorre los 1,000 metros de cada bioma esquivando fosas de magma, lagunas de agua,
+hielo resbaladizo, troncos rodantes y plataformas balancín.
+Recolecta monedas doradas para mejorar tu Motor, Suspensión, Neumáticos y Tanque
+en el Taller, y junta Rubíes Rojos para desbloquear vehículos exclusivos.
+
+SOPORTE Y ACTUALIZACIONES:
+--------------------------
+ToroCorp Studio - Todos los derechos reservados 2026.
+================================================================================

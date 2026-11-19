@@ -1,0 +1,16 @@
+# Godot 4 cache and build artifacts
+.godot/
+*.translation
+
+# Agents and temporary folders
+.agents/
+scratch/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# Large Windows standalone executable (>100MB exceeds GitHub hard limit)
+builds/windows/ToroCorp_Rutas_de_Poder.exe

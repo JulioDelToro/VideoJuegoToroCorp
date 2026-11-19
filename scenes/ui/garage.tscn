@@ -1,0 +1,457 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/garage.gd" id="1_garage"]
+[ext_resource type="Texture2D" path="res://assets/sprites/coin.png" id="2_coin"]
+[ext_resource type="Texture2D" path="res://assets/sprites/car_body.png" id="3_car"]
+[ext_resource type="Texture2D" path="res://assets/sprites/wheel.png" id="4_wheel"]
+[ext_resource type="Texture2D" path="res://assets/sprites/particle_flame.png" id="5_flame"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_red_normal.png" id="6_rnorm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_red_hover.png" id="7_rhov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_red_pressed.png" id="8_rpress"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_green_normal.png" id="9_gnorm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_green_hover.png" id="10_ghov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_green_pressed.png" id="11_gpress"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.09, 0.12, 0.17, 0.96)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.2, 0.6, 0.9, 0.85)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 14
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_red_normal"]
+texture = ExtResource("6_rnorm")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_red_hover"]
+texture = ExtResource("7_rhov")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_red_pressed"]
+texture = ExtResource("8_rpress")
+texture_margin_left = 34.0
+texture_margin_top = 20.0
+texture_margin_right = 34.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_green_normal"]
+texture = ExtResource("9_gnorm")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_green_hover"]
+texture = ExtResource("10_ghov")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_green_pressed"]
+texture = ExtResource("11_gpress")
+texture_margin_left = 34.0
+texture_margin_top = 20.0
+texture_margin_right = 34.0
+texture_margin_bottom = 16.0
+
+[node name="Garage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_garage")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.1, 0.14, 1)
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 50.0
+offset_top = 30.0
+offset_right = -50.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_constants/separation = 30
+
+[node name="BtnBack" type="Button" parent="TopBar"]
+custom_minimum_size = Vector2(170, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_y = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_red_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_red_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_red_pressed")
+text = "◀ VOLVER"
+
+[node name="Title" type="Label" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 38
+theme_override_colors/font_color = Color(0.2, 0.85, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+text = "TALLER DE MEJORAS TOROCORP"
+horizontal_alignment = 1
+
+[node name="CoinsBox" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="TopBar/CoinsBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("2_coin")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinsLabel" type="Label" parent="TopBar/CoinsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 0.88, 0.2, 1)
+text = "150"
+
+[node name="VehiclePreview" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -220.0
+offset_right = 200.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CarBody" type="TextureRect" parent="VehiclePreview"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -90.0
+offset_right = 170.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_car")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WheelBack" type="TextureRect" parent="VehiclePreview"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = 10.0
+offset_right = -45.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wheel")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WheelFront" type="TextureRect" parent="VehiclePreview"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = 10.0
+offset_right = 140.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wheel")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ThrusterGlow" type="TextureRect" parent="VehiclePreview"]
+modulate = Color(0, 0.9, 1, 0.7)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -60.0
+offset_right = -140.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_flame")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GridUpgrades" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -340.0
+offset_right = -60.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 24
+
+[node name="CardEngine" type="PanelContainer" parent="GridUpgrades"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="GridUpgrades/CardEngine"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="GridUpgrades/CardEngine/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+text = "Motor Toro-V8"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="GridUpgrades/CardEngine/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "NIVEL 1 / 5"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="GridUpgrades/CardEngine/VBox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Desc" type="Label" parent="GridUpgrades/CardEngine/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+text = "+ Potencia y Aceleración"
+horizontal_alignment = 1
+
+[node name="BtnUpgrade" type="Button" parent="GridUpgrades/CardEngine/VBox"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_y = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_green_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_green_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_green_pressed")
+text = "MEJORAR: 80 🪙"
+
+[node name="CardSuspension" type="PanelContainer" parent="GridUpgrades"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="GridUpgrades/CardSuspension"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="GridUpgrades/CardSuspension/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.2, 0.8, 1, 1)
+text = "Suspensión Pro"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="GridUpgrades/CardSuspension/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "NIVEL 1 / 5"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="GridUpgrades/CardSuspension/VBox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Desc" type="Label" parent="GridUpgrades/CardSuspension/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+text = "+ Estabilidad en Baches"
+horizontal_alignment = 1
+
+[node name="BtnUpgrade" type="Button" parent="GridUpgrades/CardSuspension/VBox"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_y = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_green_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_green_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_green_pressed")
+text = "MEJORAR: 60 🪙"
+
+[node name="CardTires" type="PanelContainer" parent="GridUpgrades"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="GridUpgrades/CardTires"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="GridUpgrades/CardTires/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.9, 0.8, 0.2, 1)
+text = "Neumáticos 4x4"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="GridUpgrades/CardTires/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "NIVEL 1 / 5"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="GridUpgrades/CardTires/VBox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Desc" type="Label" parent="GridUpgrades/CardTires/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+text = "+ Tracción en Pendientes"
+horizontal_alignment = 1
+
+[node name="BtnUpgrade" type="Button" parent="GridUpgrades/CardTires/VBox"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_y = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_green_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_green_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_green_pressed")
+text = "MEJORAR: 70 🪙"
+
+[node name="CardThruster" type="PanelContainer" parent="GridUpgrades"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="GridUpgrades/CardThruster"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="GridUpgrades/CardThruster/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.2, 0.95, 0.8, 1)
+text = "Antigravedad"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="GridUpgrades/CardThruster/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "NIVEL 1 / 5"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="GridUpgrades/CardThruster/VBox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Desc" type="Label" parent="GridUpgrades/CardThruster/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+text = "+ Fuerza de Propulsores"
+horizontal_alignment = 1
+
+[node name="BtnUpgrade" type="Button" parent="GridUpgrades/CardThruster/VBox"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_y = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_green_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_green_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_green_pressed")
+text = "MEJORAR: 100 🪙"
+
+[node name="BottomBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -90.0
+offset_right = 200.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="BtnDrive" type="Button" parent="BottomBar"]
+custom_minimum_size = Vector2(380, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_y = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_green_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_green_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_green_pressed")
+text = "▶  ¡A CONDUCIR!"

@@ -1,0 +1,146 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scenes/vehicle/vehicle.gd" id="1_vehicle"]
+[ext_resource type="Texture2D" path="res://assets/sprites/veh_4x4.png" id="2_body"]
+[ext_resource type="Texture2D" path="res://assets/sprites/driver_head.png" id="3_head"]
+[ext_resource type="Texture2D" path="res://assets/sprites/wheel.png" id="4_wheel"]
+[ext_resource type="Texture2D" path="res://assets/sprites/particle_smoke.png" id="5_smoke"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_chassis"]
+friction = 0.05
+rough = false
+bounce = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_head"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rear_wheel"]
+radius = 16.83
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_front_wheel"]
+radius = 16.83
+
+[node name="Vehicle" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 1
+mass = 40.0
+physics_material_override = SubResource("PhysicsMaterial_chassis")
+center_of_mass_mode = 1
+center_of_mass = Vector2(-4, 4)
+script = ExtResource("1_vehicle")
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -14)
+texture = ExtResource("2_body")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-95, -26, -75, -39, -45, -39, -15, -58, 42, -58, 68, -26, 115, -22, 120, -10, 75, -6, 50, -12, -50, -12, -75, -6, -95, -6)
+
+[node name="DriverHead" type="Node2D" parent="."]
+position = Vector2(10, -42)
+
+[node name="Sprite2D" type="Sprite2D" parent="DriverHead"]
+z_index = 3
+texture = ExtResource("3_head")
+scale = Vector2(0.9, 0.9)
+
+[node name="HeadArea" type="Area2D" parent="DriverHead"]
+collision_layer = 8
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DriverHead/HeadArea"]
+shape = SubResource("CircleShape2D_head")
+
+[node name="RearSuspension" type="Node2D" parent="."]
+position = Vector2(-70, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="RearSuspension"]
+target_position = Vector2(0, 92)
+collision_mask = 1
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="RearSuspension"]
+shape = SubResource("CircleShape2D_rear_wheel")
+target_position = Vector2(0, 75.17)
+max_results = 4
+collision_mask = 1
+
+[node name="WheelSprite" type="Sprite2D" parent="RearSuspension"]
+z_index = 3
+position = Vector2(0, 26)
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("4_wheel")
+
+[node name="BurnoutSmoke" type="CPUParticles2D" parent="RearSuspension"]
+z_index = 4
+position = Vector2(-16, 40)
+emitting = false
+amount = 45
+lifetime = 0.75
+local_coords = false
+texture = ExtResource("5_smoke")
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(-1, -0.45)
+spread = 32.0
+gravity = Vector2(-20, -65)
+initial_velocity_min = 65.0
+initial_velocity_max = 165.0
+damping_min = 25.0
+damping_max = 55.0
+scale_amount_min = 0.85
+scale_amount_max = 2.1
+color = Color(0.88, 0.9, 0.94, 0.78)
+
+[node name="DustParticles" type="CPUParticles2D" parent="RearSuspension"]
+z_index = 3
+position = Vector2(-14, 40)
+emitting = false
+amount = 34
+lifetime = 0.5
+local_coords = false
+texture = ExtResource("5_smoke")
+direction = Vector2(-1, -0.38)
+spread = 26.0
+gravity = Vector2(0, 260)
+initial_velocity_min = 110.0
+initial_velocity_max = 240.0
+scale_amount_min = 0.5
+scale_amount_max = 1.2
+color = Color(0.55, 0.42, 0.28, 0.88)
+
+[node name="FrontSuspension" type="Node2D" parent="."]
+position = Vector2(70, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="FrontSuspension"]
+target_position = Vector2(0, 92)
+collision_mask = 1
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="FrontSuspension"]
+shape = SubResource("CircleShape2D_front_wheel")
+target_position = Vector2(0, 75.17)
+max_results = 4
+collision_mask = 1
+
+[node name="WheelSprite" type="Sprite2D" parent="FrontSuspension"]
+z_index = 3
+position = Vector2(0, 26)
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("4_wheel")
+
+[node name="DustParticles" type="CPUParticles2D" parent="FrontSuspension"]
+z_index = 3
+position = Vector2(-10, 40)
+emitting = false
+amount = 20
+lifetime = 0.42
+local_coords = false
+texture = ExtResource("5_smoke")
+direction = Vector2(-1, -0.35)
+spread = 24.0
+gravity = Vector2(0, 240)
+initial_velocity_min = 75.0
+initial_velocity_max = 155.0
+scale_amount_min = 0.45
+scale_amount_max = 0.95
+color = Color(0.55, 0.42, 0.28, 0.78)

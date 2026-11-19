@@ -1,0 +1,723 @@
+[gd_scene load_steps=40 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/hub_menu.gd" id="1_hub"]
+[ext_resource type="Texture2D" path="res://assets/sprites/coin.png" id="2_coin"]
+[ext_resource type="Texture2D" path="res://assets/sprites/veh_4x4.png" id="3_car"]
+[ext_resource type="Texture2D" path="res://assets/sprites/wheel.png" id="4_wheel"]
+[ext_resource type="Texture2D" path="res://assets/sprites/particle_flame.png" id="5_flame"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_green_normal.png" id="6_gnorm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_green_hover.png" id="7_ghov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_green_pressed.png" id="8_gpress"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_blue_normal.png" id="9_bnorm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_blue_hover.png" id="10_bhov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_blue_pressed.png" id="11_bpress"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_amber_normal.png" id="12_anorm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_amber_hover.png" id="13_ahov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_amber_pressed.png" id="14_apress"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_red_normal.png" id="15_rnorm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_red_hover.png" id="16_rhov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_red_pressed.png" id="17_rpress"]
+[ext_resource type="Texture2D" path="res://assets/sprites/icon_gear.png" id="18_gear"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_arrow_left.png" id="19_arr_l"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_arrow_left_hover.png" id="20_arr_lh"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_arrow_right.png" id="21_arr_r"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_arrow_right_hover.png" id="22_arr_rh"]
+[ext_resource type="Texture2D" path="res://assets/sprites/garage_platform.png" id="23_plat"]
+
+[sub_resource type="StyleBoxTexture" id="green_n"]
+texture = ExtResource("6_gnorm")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="green_h"]
+texture = ExtResource("7_ghov")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="green_p"]
+texture = ExtResource("8_gpress")
+texture_margin_left = 34.0
+texture_margin_top = 20.0
+texture_margin_right = 34.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="blue_n"]
+texture = ExtResource("9_bnorm")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="blue_h"]
+texture = ExtResource("10_bhov")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="blue_p"]
+texture = ExtResource("11_bpress")
+texture_margin_left = 34.0
+texture_margin_top = 20.0
+texture_margin_right = 34.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="amber_n"]
+texture = ExtResource("12_anorm")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="amber_h"]
+texture = ExtResource("13_ahov")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="amber_p"]
+texture = ExtResource("14_apress")
+texture_margin_left = 34.0
+texture_margin_top = 20.0
+texture_margin_right = 34.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="red_n"]
+texture = ExtResource("15_rnorm")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="red_h"]
+texture = ExtResource("16_rhov")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="red_p"]
+texture = ExtResource("17_rpress")
+texture_margin_left = 34.0
+texture_margin_top = 20.0
+texture_margin_right = 34.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pill_gold"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 22.0
+content_margin_bottom = 8.0
+bg_color = Color(0.08, 0.11, 0.18, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.76, 0.2, 0.85)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pill_cyan"]
+content_margin_left = 20.0
+content_margin_top = 8.0
+content_margin_right = 20.0
+content_margin_bottom = 8.0
+bg_color = Color(0.08, 0.11, 0.18, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.72, 0.95, 0.75)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_info_card"]
+content_margin_left = 22.0
+content_margin_top = 10.0
+content_margin_right = 22.0
+content_margin_bottom = 10.0
+bg_color = Color(0.08, 0.11, 0.17, 0.93)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.65, 0.92, 0.65)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lock_badge"]
+content_margin_left = 18.0
+content_margin_top = 6.0
+content_margin_right = 18.0
+content_margin_bottom = 6.0
+bg_color = Color(0.06, 0.08, 0.13, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.78, 0.22, 0.9)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.65)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_route_bar"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.07, 0.1, 0.16, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.18, 0.78, 0.42, 0.85)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 8
+
+[node name="HubMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hub")
+
+[node name="BgRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.08, 0.13, 1)
+
+[node name="BgWallUpper" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 178.0
+grow_horizontal = 2
+color = Color(0.09, 0.12, 0.19, 0.75)
+
+[node name="BgWallStripe" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 178.0
+offset_bottom = 181.0
+grow_horizontal = 2
+color = Color(0.2, 0.65, 0.95, 0.35)
+
+[node name="SpotlightBeam" type="Polygon2D" parent="."]
+position = Vector2(960, 181)
+color = Color(0.22, 0.62, 0.95, 0.07)
+polygon = PackedVector2Array(-140, 0, 140, 0, 390, 445, -390, 445)
+
+[node name="FloorLine" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -173.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.12, 0.15, 0.22, 1)
+
+[node name="FloorAccent" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -176.0
+offset_bottom = -173.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.22, 0.75, 0.98, 0.75)
+
+[node name="TitleBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -460.0
+offset_top = 74.0
+offset_right = 460.0
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_constants/separation = 2
+
+[node name="TitleLabel" type="Label" parent="TitleBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(1, 0.92, 0.55, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+text = "TOROCORP GAMING RUTAS"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="TitleBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.45, 0.82, 1, 0.9)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+text = "★  SHOWROOM OFICIAL  •  11 VEHÍCULOS Y 10 NIVELES FUSIONADOS  ★"
+horizontal_alignment = 1
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 36.0
+offset_top = 18.0
+offset_right = -36.0
+offset_bottom = 82.0
+grow_horizontal = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="CoinsPanel" type="PanelContainer" parent="TopBar"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pill_gold")
+
+[node name="CoinsBox" type="HBoxContainer" parent="TopBar/CoinsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TopBar/CoinsPanel/CoinsBox"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("2_coin")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinsLabel" type="Label" parent="TopBar/CoinsPanel/CoinsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 0.88, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "150"
+
+[node name="Spacer" type="Control" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RecordPanel" type="PanelContainer" parent="TopBar"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pill_cyan")
+
+[node name="RecordLabel" type="Label" parent="TopBar/RecordPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.85, 0.92, 1, 0.95)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "🏆 RÉCORD: 0 m"
+
+[node name="BtnSettings" type="TextureButton" parent="TopBar"]
+custom_minimum_size = Vector2(62, 62)
+layout_mode = 2
+size_flags_vertical = 4
+pivot_offset = Vector2(31, 31)
+tooltip_text = "Ajustes y Configuración"
+texture_normal = ExtResource("18_gear")
+texture_pressed = ExtResource("18_gear")
+texture_hover = ExtResource("18_gear")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="GaragePlatform" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = 2.0
+offset_right = 330.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_plat")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VehiclePreview" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -186.0
+offset_right = 250.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 140)
+
+[node name="CarBody" type="TextureRect" parent="VehiclePreview"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -104.0
+offset_right = 200.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_car")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WheelBack" type="TextureRect" parent="VehiclePreview"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = 12.0
+offset_right = -58.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(52, 52)
+texture = ExtResource("4_wheel")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WheelFront" type="TextureRect" parent="VehiclePreview"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 58.0
+offset_top = 12.0
+offset_right = 162.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(52, 52)
+texture = ExtResource("4_wheel")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LockBadge" type="PanelContainer" parent="VehiclePreview"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -34.0
+offset_right = 150.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lock_badge")
+
+[node name="LockBadgeLabel" type="Label" parent="VehiclePreview/LockBadge"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(1, 0.88, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "🔒 BLOQUEADO"
+horizontal_alignment = 1
+
+[node name="BtnPrevVehicle" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -410.0
+offset_top = -66.0
+offset_right = -314.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(48, 48)
+tooltip_text = "Vehículo Anterior"
+texture_normal = ExtResource("19_arr_l")
+texture_pressed = ExtResource("19_arr_l")
+texture_hover = ExtResource("20_arr_lh")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BtnNextVehicle" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 314.0
+offset_top = -66.0
+offset_right = 410.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(48, 48)
+tooltip_text = "Siguiente Vehículo"
+texture_normal = ExtResource("21_arr_r")
+texture_pressed = ExtResource("21_arr_r")
+texture_hover = ExtResource("22_arr_rh")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VehicleInfoCard" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = 136.0
+offset_right = 330.0
+offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(330, 61)
+theme_override_styles/panel = SubResource("StyleBoxFlat_info_card")
+
+[node name="VBox" type="VBoxContainer" parent="VehicleInfoCard"]
+layout_mode = 2
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="HeaderRow" type="HBoxContainer" parent="VehicleInfoCard/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="VehicleName" type="Label" parent="VehicleInfoCard/VBox/HeaderRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "Toro 4x4"
+horizontal_alignment = 1
+
+[node name="VehicleCounter" type="Label" parent="VehicleInfoCard/VBox/HeaderRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.35, 0.95, 0.55, 1)
+text = "✓ EN TU GARAJE (1/11)"
+
+[node name="VehicleStats" type="Label" parent="VehicleInfoCard/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.55, 0.88, 1, 0.95)
+text = "⚡ Motor: 100%   •   🔩 Suspensión: 100%   •   🛞 Tracción: 95%"
+horizontal_alignment = 1
+
+[node name="VehicleDesc" type="Label" parent="VehicleInfoCard/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.76, 0.82, 0.9, 0.95)
+text = "Todoterreno 4x4 clásico. Equilibrado, resistente y listo para cualquier colina."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="RouteSelectorBar" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -430.0
+offset_top = 270.0
+offset_right = 430.0
+offset_bottom = 348.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(430, 39)
+theme_override_styles/panel = SubResource("StyleBoxFlat_route_bar")
+
+[node name="HBox" type="HBoxContainer" parent="RouteSelectorBar"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="BtnPrevRoute" type="Button" parent="RouteSelectorBar/HBox"]
+custom_minimum_size = Vector2(52, 50)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Nivel Anterior"
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("blue_n")
+theme_override_styles/hover = SubResource("blue_h")
+theme_override_styles/pressed = SubResource("blue_p")
+text = "◀"
+
+[node name="RouteInfoBox" type="VBoxContainer" parent="RouteSelectorBar/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="RouteNameLabel" type="Label" parent="RouteSelectorBar/HBox/RouteInfoBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "🌿⚡ NIVEL 1/10: PRADERA CYBER-SOLAR"
+horizontal_alignment = 1
+
+[node name="RouteStatsLabel" type="Label" parent="RouteSelectorBar/HBox/RouteInfoBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.55, 0.95, 0.68, 0.95)
+text = "Bosque Esmeralda × Tecnología Solar Neón  •  🏁 Meta: 350 m  •  Premio: +250 🪙"
+horizontal_alignment = 1
+
+[node name="BtnRouteAction" type="Button" parent="RouteSelectorBar/HBox"]
+custom_minimum_size = Vector2(186, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("green_n")
+theme_override_styles/hover = SubResource("green_h")
+theme_override_styles/pressed = SubResource("green_p")
+text = "✓ NIVEL ACTIVO"
+
+[node name="BtnNextRoute" type="Button" parent="RouteSelectorBar/HBox"]
+custom_minimum_size = Vector2(52, 50)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Siguiente Nivel"
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("blue_n")
+theme_override_styles/hover = SubResource("blue_h")
+theme_override_styles/pressed = SubResource("blue_p")
+text = "▶"
+
+[node name="ButtonBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -680.0
+offset_top = -128.0
+offset_right = 680.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+theme_override_constants/separation = 24
+
+[node name="BtnPlay" type="Button" parent="ButtonBar"]
+custom_minimum_size = Vector2(310, 80)
+layout_mode = 2
+pivot_offset = Vector2(155, 40)
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.04, 0.35, 0.12, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_styles/normal = SubResource("green_n")
+theme_override_styles/hover = SubResource("green_h")
+theme_override_styles/pressed = SubResource("green_p")
+text = "▶  JUGAR"
+
+[node name="BtnUpgrades" type="Button" parent="ButtonBar"]
+custom_minimum_size = Vector2(275, 72)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.04, 0.22, 0.45, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_styles/normal = SubResource("blue_n")
+theme_override_styles/hover = SubResource("blue_h")
+theme_override_styles/pressed = SubResource("blue_p")
+text = "🔧  MEJORAS"
+
+[node name="BtnVehicles" type="Button" parent="ButtonBar"]
+custom_minimum_size = Vector2(275, 72)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.3, 0.25, 0.05, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_styles/normal = SubResource("amber_n")
+theme_override_styles/hover = SubResource("amber_h")
+theme_override_styles/pressed = SubResource("amber_p")
+text = "🚗  VEHÍCULOS"
+
+[node name="BtnShop" type="Button" parent="ButtonBar"]
+custom_minimum_size = Vector2(275, 72)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.35, 0.08, 0.08, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_styles/normal = SubResource("red_n")
+theme_override_styles/hover = SubResource("red_h")
+theme_override_styles/pressed = SubResource("red_p")
+text = "🛒  TIENDA"
+
+[node name="PanelLayer" type="CanvasLayer" parent="."]
+layer = 10

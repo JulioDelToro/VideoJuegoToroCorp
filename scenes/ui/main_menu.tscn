@@ -1,0 +1,212 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_menu"]
+[ext_resource type="VideoStream" path="res://assets/video/menu_video.ogv" id="2_video"]
+[ext_resource type="Texture2D" path="res://assets/sprites/coin.png" id="3_coin"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_green_normal.png" id="4_gnorm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_green_hover.png" id="5_ghov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_green_pressed.png" id="6_gpress"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_blue_normal.png" id="7_bnorm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_blue_hover.png" id="8_bhov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_blue_pressed.png" id="9_bpress"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_amber_normal.png" id="10_anorm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_amber_hover.png" id="11_ahov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_amber_pressed.png" id="12_apress"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_red_normal.png" id="13_rnorm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_red_hover.png" id="14_rhov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_red_pressed.png" id="15_rpress"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_green_normal"]
+texture = ExtResource("4_gnorm")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_green_hover"]
+texture = ExtResource("5_ghov")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_green_pressed"]
+texture = ExtResource("6_gpress")
+texture_margin_left = 34.0
+texture_margin_top = 20.0
+texture_margin_right = 34.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_blue_normal"]
+texture = ExtResource("7_bnorm")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_blue_hover"]
+texture = ExtResource("8_bhov")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_blue_pressed"]
+texture = ExtResource("9_bpress")
+texture_margin_left = 34.0
+texture_margin_top = 20.0
+texture_margin_right = 34.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_amber_normal"]
+texture = ExtResource("10_anorm")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_amber_hover"]
+texture = ExtResource("11_ahov")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_amber_pressed"]
+texture = ExtResource("12_apress")
+texture_margin_left = 34.0
+texture_margin_top = 20.0
+texture_margin_right = 34.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_red_normal"]
+texture = ExtResource("13_rnorm")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_red_hover"]
+texture = ExtResource("14_rhov")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_red_pressed"]
+texture = ExtResource("15_rpress")
+texture_margin_left = 34.0
+texture_margin_top = 20.0
+texture_margin_right = 34.0
+texture_margin_bottom = 16.0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_video")
+autoplay = true
+expand = true
+
+[node name="TopStats" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 50.0
+offset_top = 25.0
+offset_right = -50.0
+offset_bottom = 75.0
+grow_horizontal = 2
+theme_override_constants/separation = 40
+
+[node name="CoinsBox" type="HBoxContainer" parent="TopStats"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TextureRect" type="TextureRect" parent="TopStats/CoinsBox"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+texture = ExtResource("3_coin")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinsLabel" type="Label" parent="TopStats/CoinsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(1, 0.88, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "150"
+
+[node name="RecordLabel" type="Label" parent="TopStats"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.95, 0.95, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "MEJOR RÉCORD: 0 m"
+
+[node name="ButtonOverlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -580.0
+offset_top = -40.0
+offset_right = -80.0
+offset_bottom = 400.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxButtons" type="VBoxContainer" parent="ButtonOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="BtnPlay" type="Button" parent="ButtonOverlay/VBoxButtons"]
+custom_minimum_size = Vector2(460, 82)
+layout_mode = 2
+pivot_offset = Vector2(230, 41)
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.04, 0.35, 0.12, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_green_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_green_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_green_pressed")
+text = "▶   JUGAR"
+
+[node name="BtnGarage" type="Button" parent="ButtonOverlay/VBoxButtons"]
+custom_minimum_size = Vector2(460, 76)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.04, 0.22, 0.45, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_blue_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_blue_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_blue_pressed")
+text = "⚙   TALLER / MEJORAS"

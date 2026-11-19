@@ -1,0 +1,120 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/vehicles_panel.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_red_normal.png" id="2_btn_n"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_red_hover.png" id="3_btn_h"]
+[ext_resource type="Texture2D" path="res://assets/sprites/btn_red_pressed.png" id="4_btn_p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.07, 0.09, 0.14, 0.97)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.9, 0.7, 0.2, 0.85)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_red_normal"]
+texture = ExtResource("2_btn_n")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_red_hover"]
+texture = ExtResource("3_btn_h")
+texture_margin_left = 34.0
+texture_margin_top = 14.0
+texture_margin_right = 34.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_red_pressed"]
+texture = ExtResource("4_btn_p")
+texture_margin_left = 34.0
+texture_margin_top = 20.0
+texture_margin_right = 34.0
+texture_margin_bottom = 16.0
+
+[node name="VehiclesPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="DimBg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="PanelCard" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -250.0
+offset_right = 700.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Margin" type="MarginContainer" parent="PanelCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="PanelCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TopBar" type="HBoxContainer" parent="PanelCard/Margin/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelCard/Margin/VBox/TopBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.7, 0.2, 1)
+theme_override_font_sizes/font_size = 36
+text = "🚗 TUS VEHÍCULOS"
+
+[node name="Spacer" type="Control" parent="PanelCard/Margin/VBox/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BtnClose" type="Button" parent="PanelCard/Margin/VBox/TopBar"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_red_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_red_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_red_pressed")
+text = "✕ CERRAR"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelCard/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="Grid" type="HBoxContainer" parent="PanelCard/Margin/VBox/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20

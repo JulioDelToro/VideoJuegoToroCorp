@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_game"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/bg_sky.png" id="2_sky"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/bg_mountains.png" id="3_mountains"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/bg_city.png" id="4_city"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/bg_trees.png" id="5_trees"]
+[ext_resource type="Script" path="res://scenes/terrain/terrain_generator.gd" id="6_terrain"]
+[ext_resource type="PackedScene" path="res://scenes/vehicle/vehicle.tscn" id="7_vehicle"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="8_hud"]
+[ext_resource type="Texture2D" path="res://assets/sprites/start_gate.png" id="9_gate"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_barrier"]
+size = Vector2(70, 700)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.02, 0.02)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
+position = Vector2(1280, 700)
+texture = ExtResource("2_sky")
+
+[node name="MountainsLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.08, 0.04)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MountainsLayer"]
+position = Vector2(1280, 700)
+texture = ExtResource("3_mountains")
+
+[node name="CityLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.18, 0.08)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CityLayer"]
+position = Vector2(1280, 700)
+texture = ExtResource("4_city")
+
+[node name="TreesLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.35, 0.14)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/TreesLayer"]
+position = Vector2(1280, 700)
+texture = ExtResource("5_trees")
+
+[node name="TerrainGenerator" type="Node2D" parent="."]
+script = ExtResource("6_terrain")
+
+[node name="StartBarrier" type="StaticBody2D" parent="."]
+position = Vector2(-75, 680)
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartBarrier"]
+position = Vector2(-15, -280)
+shape = SubResource("RectangleShape2D_barrier")
+
+[node name="Sprite2D" type="Sprite2D" parent="StartBarrier"]
+position = Vector2(0, -160)
+texture = ExtResource("9_gate")
+
+[node name="Vehicle" parent="." instance=ExtResource("7_vehicle")]
+position = Vector2(0, 625)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 625)
+offset = Vector2(250, -60)
+zoom = Vector2(0.88, 0.88)
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+
+[node name="HUD" parent="." instance=ExtResource("8_hud")]
