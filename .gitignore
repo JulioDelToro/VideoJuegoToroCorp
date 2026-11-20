@@ -11,6 +11,7 @@ scratch/
 Thumbs.db
 *.tmp
 *.log
+*.lnk
 
 # Large Windows standalone executable (>100MB exceeds GitHub hard limit)
 builds/windows/ToroCorp_Rutas_de_Poder.exe
